@@ -38,7 +38,7 @@ public class App {
 
         }else
         {
-            // System.out.println("| No  | Id \t| Nama Kapal \t  | kapasitas kursi |");
+          
             System.out.println("------------------------------------------");
             System.out.printf(" %3s  %-5s  %5s  %5s %n", "No", "Id", "Nama Kapal", "kursi");
             System.out.println("------------------------------------------");
@@ -49,13 +49,8 @@ public class App {
                 String kpl_id = kpl.getKapalId();
                 String  kpl_nama = kpl.getNamaKapal();
                 int kpl_kursi = kpl.getKapasitasKursi();
-                // System.out.println("| " + (i + 1) + "  | "+ kpl_id+ " \t| " + kpl_nama+ " \t  | "+ kpl_kursi+ " |" );
+       
                 System.out.printf(" %-3s  %-3s  %-9s  %5d %n", (i+1), kpl_id, kpl_nama, kpl_kursi);
-
-                // System.out.println("No : " + (i + 1) );
-                // System.out.println("Id : " +  kpl_id);
-                // System.out.println("Nama Kapal : " + kpl_nama);
-                // System.out.println("Kapasitas Kursi : " + kpl_kursi + "\n");
 
             }
             
@@ -86,11 +81,6 @@ public class App {
                 int rt_durasi = rt.getDurasiPerjalanan();
                 System.out.printf("%3d  %-1s  %-10s %-10s %3d %n", (i+1), rt_id, rt_asal, rt_tujuan, rt_durasi);
 
-                // System.out.println("No : " + (i + 1) );
-                // System.out.println("Id : " +  rt_id);
-                // System.out.println("Rute asal : " + rt_asal);
-                // System.out.println("Rute tujuan  : " + rt_tujuan);
-                // System.out.println("Durasi Perjalanan : " + rt_durasi + " menit \n");
                 
             }
             
@@ -380,7 +370,6 @@ public class App {
 
     static void deleteKapal() throws IOException
     {
-        // err handl ketika kapal yg dipakek sama jadwal dihapus, tampilkan warning
 
         cls();
         showKapal();
@@ -416,7 +405,6 @@ public class App {
 
     static void deleteRute() throws IOException
     {
-        // buat err handl ketika rute yg dipakek sama jadwal dihapus, tampilkan warning
         cls();
         showRute();
         try {
@@ -432,7 +420,6 @@ public class App {
 
                 String jdwl_rte = jdwl.getRuteId();
                 
-
                 if (rte_name == jdwl_rte) {
                     System.out.println("data rute telah ditambahkan ke jadwal, silahkan hapus jadwal terlebih dahulu");
                     return;
