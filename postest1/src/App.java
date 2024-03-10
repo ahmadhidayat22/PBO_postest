@@ -19,8 +19,7 @@ public class App {
     public static String randomUID() {
         final String uuid = UUID.randomUUID().toString().split("-")[1].toUpperCase();
         return uuid;
-        // System.out.println("UUID generated - " + uuid);
-        // System.out.println("UUID Version - " + uuid.version());
+        
     }
 
     public static void cls() 
@@ -39,6 +38,10 @@ public class App {
 
         }else
         {
+            // System.out.println("| No  | Id \t| Nama Kapal \t  | kapasitas kursi |");
+            System.out.println("------------------------------------------");
+            System.out.printf(" %3s  %-5s  %5s  %5s %n", "No", "Id", "Nama Kapal", "kursi");
+            System.out.println("------------------------------------------");
 
             for (int i = 0; i < kapalArr.size(); i++)
             {
@@ -46,15 +49,17 @@ public class App {
                 String kpl_id = kpl.getKapalId();
                 String  kpl_nama = kpl.getNamaKapal();
                 int kpl_kursi = kpl.getKapasitasKursi();
-                
-                System.out.println("No : " + (i + 1) );
-                System.out.println("Id : " +  kpl_id);
-                System.out.println("Nama Kapal : " + kpl_nama);
-                System.out.println("Kapasitas Kursi : " + kpl_kursi + "\n");
+                // System.out.println("| " + (i + 1) + "  | "+ kpl_id+ " \t| " + kpl_nama+ " \t  | "+ kpl_kursi+ " |" );
+                System.out.printf(" %-3s  %-3s  %-9s  %5d %n", (i+1), kpl_id, kpl_nama, kpl_kursi);
+
+                // System.out.println("No : " + (i + 1) );
+                // System.out.println("Id : " +  kpl_id);
+                // System.out.println("Nama Kapal : " + kpl_nama);
+                // System.out.println("Kapasitas Kursi : " + kpl_kursi + "\n");
 
             }
             
-            System.out.println("===================\n");
+        
 
         }
         
@@ -62,14 +67,16 @@ public class App {
 
     static void showRute()
     {
-        System.out.println("\n=========== Data Rute =========== ");
+        System.out.println("\n=========== Data Rute ===========\n ");
         if (ruteArr.size() == 0 ) {
             System.out.println("Tidak ada data");
             return;
 
         }else
         {
-
+            System.out.println("------------------------------------------");
+            System.out.printf("%3s  %-6s  %-6s  %5s %3s %n", "No", "Id", "Rute Asal", "Rute Tujuan", "Durasi");
+            System.out.println("------------------------------------------");
             for (int i = 0; i < ruteArr.size(); i++)
             {
                 rute rt = ruteArr.get(i);
@@ -77,15 +84,16 @@ public class App {
                 String  rt_asal = rt.getAsal();
                 String  rt_tujuan = rt.getTujuan();
                 int rt_durasi = rt.getDurasiPerjalanan();
+                System.out.printf("%3d  %-1s  %-10s %-10s %3d %n", (i+1), rt_id, rt_asal, rt_tujuan, rt_durasi);
 
-                System.out.println("No : " + (i + 1) );
-                System.out.println("Id : " +  rt_id);
-                System.out.println("Rute asal : " + rt_asal);
-                System.out.println("Rute tujuan  : " + rt_tujuan);
-                System.out.println("Durasi Perjalanan : " + rt_durasi + " menit \n");
+                // System.out.println("No : " + (i + 1) );
+                // System.out.println("Id : " +  rt_id);
+                // System.out.println("Rute asal : " + rt_asal);
+                // System.out.println("Rute tujuan  : " + rt_tujuan);
+                // System.out.println("Durasi Perjalanan : " + rt_durasi + " menit \n");
                 
             }
-            System.out.println("=========================\n");
+            
         }
     }
     
@@ -95,18 +103,25 @@ public class App {
 
         for(int i=0; i<jadwalArr.size(); i++)
         {
+            
             jadwal jdwl = jadwalArr.get(i);
             String idJdwl = jdwl.getJadwalId();
-            String useKapal = jdwl.getKapalId();
-            String useRute = jdwl.getRuteId();
+            String idKpl = jdwl.getKapalId();
+            String idRte = jdwl.getRuteId();
+            String useKapal = jdwl.getKapalName();
+            String useRute = jdwl.getRuteName();
             String waktuBerangkat = jdwl.getWaktuBerangkat();
+      
             
-            System.out.println("No : " + (i + 1) );
-            System.out.println("Id : " +  idJdwl);
-            System.out.println("Nama Kapal : " + useKapal);
-            System.out.println("Rute : " + useRute);
-            System.out.println("Waktu : " + waktuBerangkat);
-            System.out.println("===================\n");
+            System.out.printf("%8s %3s %3s %n","No"         ,":", (i +1) );
+            System.out.printf("%8s %3s %3s %n","Id"         ,":",  idJdwl);
+            System.out.printf("%8s %3s %3s %n","Rute Id"    ,":",  idKpl);
+            System.out.printf("%8s %3s %3s %n","Kapal Id"   ,":",  idRte);
+            System.out.printf("%8s %3s %3s %n","Kapal"      ,":", useKapal);
+            System.out.printf("%8s %3s %3s %n","Rute"       ,":", useRute);
+            System.out.printf("%8s %3s %3s %n","Waktu"      ,":", waktuBerangkat);
+            System.out.println("--------------------------------");
+            System.out.println("\n");
         }
 
     }
@@ -159,62 +174,62 @@ public class App {
     {
         cls();
         try {
-            
-            showKapal();
-            // for (int x = 0; x < kapalArr.size(); x++)
-            // {   
-            //     kapal kpl = kapalArr.get(x);
-                
-            //     String kplNama = kpl.getNamaKapal();
-            //     int kplKursi = kpl.getKapasitasKursi();
-            //     System.out.println("No : " + (x + 1) + ", Nama Kapal : " + kplNama + ", Kursi : " + kplKursi);
-
-
-            // }
-           
+            if ( kapalArr.size() ==0 && ruteArr.size() == 0) {
+                System.out.println("masukkan data kapal dan rute terlebih dahulu!!");
+                return;
+            }
+            showKapal();           
             showRute();
-            // for(int y = 0; y < ruteArr.size(); y++)
-            // {
-            //     rute rte = ruteArr.get(y);
-                
-            //     String asal = rte.getAsal();
-            //     String tujuan = rte.getTujuan();
-            //     int timeTravl = rte.getDurasiPerjalanan();
-            //     System.out.println("No : " + (y + 1) + ", Rute Asal : " + asal + ", Rute tujuan : " + tujuan + ", durasi : " + timeTravl);
-
-
-            // }
+          
             System.out.println("==========================\n");
 
             String  jdwlId = "JDW" + randomUID();
 
-            System.out.print("Pilih kapal :");
+            System.out.print("Nomor kapal :");
             int indx_kapal = Integer.parseInt(br.readLine());
-            System.out.print("Pilih rute : ");
+            System.out.print("Nomor rute : ");
             int indx_rute = Integer.parseInt(br.readLine());
             String kapal_name = "";
-            String kapal_rute = "";
-            
+            String rute_name = "";
+            String kapal_id = "";
+            String rute_id = "";
+            boolean is_kapal = true;
+            boolean is_rute = true;
             for(int i = 0; i < kapalArr.size(); i++)
             {
                 if ((indx_kapal - 1) == i) {
                     kapal kpl2 = kapalArr.get(i);
                     kapal_name = kpl2.getNamaKapal();
-                     
+                    kapal_id = kpl2.getKapalId();
+                    is_kapal= true;
+                    break;
+
+                }else{
+                    is_kapal= false;
                 }
             }
             for(int j = 0; j < ruteArr.size(); j++)
             {
                 if ((indx_rute - 1) == j) {
                     rute rte = ruteArr.get(j);
-                    kapal_rute = rte.getAsal() + " - " + rte.getTujuan() ;
+                    rute_name = rte.getAsal() + " - " + rte.getTujuan() ;
+                    rute_id = rte.getRuteId();
+                    is_rute = true;
+                    break;
+                }else{
+                    is_rute = false;
                 }
             }
-            System.out.print("Tanggal Berangkat : ");
-            String berangkat = br.readLine();
-
-            jadwal jdl = new jadwal(jdwlId, kapal_name, kapal_rute, berangkat);
-            jadwalArr.add(jdl);
+            if (is_rute && is_kapal){ 
+                System.out.print("Tanggal Berangkat : ");
+                String berangkat = br.readLine();
+    
+                jadwal jdl = new jadwal(jdwlId, kapal_id,rute_id , kapal_name, rute_name, berangkat);
+                jadwalArr.add(jdl); 
+            }else{
+                System.out.println("kesalahan nomor kapal atau rute, silahkan coba lagi...");
+                return;               
+            }
 
         } catch (Exception e) {
             System.out.println("error "  + e);
@@ -230,7 +245,7 @@ public class App {
             return;
             
         }else{
-            System.out.println("Ubah nomor : ");
+            System.out.print("Ubah nomor : ");
             int index = Integer.parseInt(br.readLine());
 
             for(int i = 0; i < kapalArr.size(); i++)
@@ -261,7 +276,7 @@ public class App {
             
         }else
         {
-            System.out.println("Ubah nomor : ");
+            System.out.print("Ubah nomor : ");
             int index = Integer.parseInt(br.readLine());
 
             for(int i = 0; i < ruteArr.size(); i++)
@@ -279,7 +294,7 @@ public class App {
                     String tujuan_rute_new = br.readLine();
                     newRte.setTujuan(tujuan_rute_new.toUpperCase());
 
-                    System.out.println("Durasi Rute baru");
+                    System.out.print("Durasi Rute baru :");
                     int time_rute_new = Integer.parseInt(br.readLine());
                     newRte.setDurasiPerjalanan(time_rute_new);
 
@@ -301,7 +316,7 @@ public class App {
         for(int i = 0 ; i< jadwalArr.size() ; i++)
         {
             if ((indx_jdwl - 1) == i) {
-                // err handling ketika pilih kapal/rute tidak sesuai dgn list !
+                
 
                 jadwal newJdwl = jadwalArr.get(i);
                 System.out.println("------------------");
@@ -312,6 +327,8 @@ public class App {
                 
                 System.out.print("Pilih Rute baru : ");
                 int indx_rute_new = Integer.parseInt(br.readLine());
+                boolean isContaint = true;
+                boolean isContaint2 = true;
                 
                 for(int j = 0; j < kapalArr.size(); j++) // pilih kapal berdasarkan nomor 
                 {
@@ -319,22 +336,42 @@ public class App {
                         kapal kpl2 = kapalArr.get(j);
                         String kapal_name_new = kpl2.getNamaKapal();
                         newJdwl.setNamaKapal(kapal_name_new);
+                        isContaint = true;
+                        break;
+                        
+                    }else{
+                        isContaint = false;
                     }
                 }
+
                 for(int x = 0; x < ruteArr.size(); x++) // pilih rute berdasarkan nomor 
                 {
                     if ((indx_rute_new - 1) == x) {
                         rute newRte = ruteArr.get(x);
                         String kapal_rute_new = newRte.getAsal() + " - " + newRte.getTujuan() ;
-                        newJdwl.setRute(kapal_rute_new);
-                    }   
+                        newJdwl.setNamaRute(kapal_rute_new);
+                        isContaint2 = true;
+                        break;
+
+                     
+                    }else{
+                        isContaint2 = false;
+                    }
                 }
 
-                System.out.print("Tanggal berangkat :");
-                String berangkat_new = br.readLine();
-                newJdwl.setWaktuBerangkat(berangkat_new);
-                System.out.println("Berhasil di update....");
+                // err handling ketika pilih kapal/rute tidak sesuai dgn list !
+                if (isContaint && isContaint2) {
+                    System.out.print("Tanggal berangkat :");
+                    String berangkat_new = br.readLine();
+                    newJdwl.setWaktuBerangkat(berangkat_new);
+                    System.out.println("Berhasil di update....");
 
+                    
+                }else{                    
+                    System.out.println("kesalahan nomor kapal atau rute, silahkan coba lagi...");
+                    
+                    return;
+                }
 
             }
         }
@@ -343,15 +380,34 @@ public class App {
 
     static void deleteKapal() throws IOException
     {
-        // buat err handl ketika kapal yg dipakek sama jadwal dihapus, tampilkan warning
+        // err handl ketika kapal yg dipakek sama jadwal dihapus, tampilkan warning
 
         cls();
         showKapal();
         try {
             System.out.print("Hapus nomor : ");
             int del = Integer.parseInt(br.readLine());
+            System.out.println("data nomor " + del + " akan dihapus");
+            
+            for(int i = 0; i < jadwalArr.size(); i++)
+            {
+                kapal kpl = kapalArr.get(del-1);
+                jadwal jdwl = jadwalArr.get(i);
+                String kpl_name = kpl.getKapalId();
+                String kapalId = jdwl.getKapalId();
+
+                if (kpl_name == kapalId) {
+                    System.out.println("data kapal telah ditambahkan ke jadwal, silahkan hapus jadwal terlebih dahulu");
+                    return;
+                }
+            }
+
+
             kapalArr.remove(del-1);
             System.out.println("Berhasil dihapus....");  
+            System.out.println("tekan enter untuk melanjutkan...");
+            br.readLine();
+            
         } catch (Exception e) {
             System.out.println("Oops!");
         }
@@ -366,8 +422,27 @@ public class App {
         try {
             System.out.println("Hapus nomor : ");
             int del = Integer.parseInt(br.readLine());
+            System.out.println("data nomor " + del + " akan dihapus");
+            
+            for(int i = 0; i < jadwalArr.size(); i++)
+            {
+                rute rte = ruteArr.get(del-1);
+                jadwal jdwl = jadwalArr.get(i);
+                String rte_name = rte.getRuteId();
+
+                String jdwl_rte = jdwl.getRuteId();
+                
+
+                if (rte_name == jdwl_rte) {
+                    System.out.println("data rute telah ditambahkan ke jadwal, silahkan hapus jadwal terlebih dahulu");
+                    return;
+                }
+            }
+
             ruteArr.remove(del-1);
-            System.out.println("Berhasil dihapus....");    
+            System.out.println("Berhasil dihapus....");   
+            System.out.println("tekan enter untuk melanjutkan...");
+            br.readLine(); 
         } catch (Exception e) {
             System.out.println("oops!");
         }
@@ -381,8 +456,12 @@ public class App {
         try {
             System.out.println("Hapus nomor : ");
             int del = Integer.parseInt(br.readLine());
+            System.out.println("data nomor " + (del-1) + " akan dihapus");
+            
             jadwalArr.remove(del-1);
             System.out.println("Berhasil dihapus....");
+            System.out.println("tekan enter untuk melanjutkan...");
+            br.readLine();
         } catch (Exception e) {
             System.out.println("Opps!");
         }
@@ -394,7 +473,7 @@ public class App {
         
 
         // loop -> label buat looper/while supaya bisa di panggil lagi dan di stop pada case 5
-
+        try {    
         loop: while ( true ) {
             System.out.println("====================");
             System.out.println("1. Lihat Data");
@@ -433,7 +512,7 @@ public class App {
                 case 2:
                     System.out.println("> 1. Tambah data kapal");
                     System.out.println("> 2. Tambah data rute");
-                    System.out.println("> 2. Tambah data jadwal");
+                    System.out.println("> 3. Tambah data jadwal");
                     System.out.println("> 0. Kembali");
                     System.out.print("> Pilih : ");
                     int pilih2 = Integer.parseInt(br.readLine());
@@ -488,6 +567,7 @@ public class App {
                 case 4:
                     System.out.println("> 1. Hapus data kapal");
                     System.out.println("> 2. Hapus data rute");
+                    System.out.println("> 3. Hapus data jadwal");
                     System.out.println("> 0. Kembali");
                     System.out.print("> Pilih : ");
                     int pilih4 = Integer.parseInt(br.readLine());
@@ -513,7 +593,7 @@ public class App {
 
                     break;
                 case 5:
-                    System.out.println("Coding is fun, bye.. :)");
+                    System.out.println("bye.. :)");
 
                     break loop; 
                 default:
@@ -521,5 +601,11 @@ public class App {
             }
         }
 
+
+
+
+        } catch (IOException e) {
+            System.out.println("error: " + e);
+        }
     }
 }

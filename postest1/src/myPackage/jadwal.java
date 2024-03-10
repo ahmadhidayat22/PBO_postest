@@ -4,13 +4,17 @@ public class jadwal {
     String jadwalId;
     String kapalId;
     String ruteId;
+    String kapalName;
+    String ruteName;
     String waktuBerangkat;
 
-    public jadwal(String jadwalId, String kapalId, String ruteId, String waktuBerangkat)
+    public jadwal(String jadwalId, String kapalId, String ruteId, String waktuBerangkat, String kapalName, String ruteName)
     {
         this.jadwalId = jadwalId;
         this.kapalId = kapalId;
         this.ruteId = ruteId;
+        this.kapalName = kapalName;
+        this.ruteName = ruteName;
         this.waktuBerangkat = waktuBerangkat;
 
     }
@@ -31,6 +35,14 @@ public class jadwal {
     {
         return waktuBerangkat;
     }
+    public String getKapalName()
+    {
+        return kapalName;
+    }
+    public String getRuteName()
+    {
+        return ruteName;
+    }
 
 
     public void setJadwalId(String args)
@@ -43,9 +55,17 @@ public class jadwal {
     }
     public void setNamaKapal(String args)
     {
+        kapalName = args;
+    }
+    public void setNamaRute(String args)
+    {
+        ruteName= args;
+    }
+    public void setIdkapal(String args)
+    {
         kapalId = args;
     }
-    public void setRute(String args)
+    public void setIdRute(String args)
     {
         ruteId = args;
     }
