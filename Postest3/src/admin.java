@@ -1,4 +1,4 @@
-package myPackage;
+// package myPackage;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -11,24 +11,29 @@ public class admin extends user{
     private static BufferedReader br = new BufferedReader(sr);
     private static ArrayList <kapal> kapalArr = new ArrayList<>();
     private static ArrayList <rute> ruteArr = new ArrayList<>();
-    private static ArrayList <jadwal> jadwalArr = new ArrayList<>();
+    public static ArrayList <jadwal> jadwalArr;
 
     public admin(String username, String password, String role)
     {
         super(username, password);
         this.role = role;
-
+        admin.jadwalArr = new ArrayList<>();
     }
 
     public String getRole()
     {
         return role;
     }
-    private static void cls() 
-    {     
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();  
+    // private static void cls() 
+    // {     
+    //     System.out.print("\033[H\033[2J");  
+    //     System.out.flush();  
     
+    // }
+
+    public static ArrayList <jadwal> getJadwal()
+    {
+        return jadwalArr;
     }
 
     private static String randomUID() {
@@ -100,8 +105,12 @@ public class admin extends user{
         }
     }
     
-    private static void showJadwal()
+    public static void showJadwal()
     {
+        if (jadwalArr.size() == 0){
+            System.out.println("tidak ada data");
+            return;
+        };
         System.out.println("============ jadwal ============");
 
         for(int i=0; i<jadwalArr.size(); i++)
@@ -227,8 +236,9 @@ public class admin extends user{
             if (is_rute && is_kapal){ 
                 System.out.print("Tanggal Berangkat : ");
                 String berangkat = br.readLine();
+                // public jadwal(String jadwalId, String kapalId, String ruteId, String waktuBerangkat, String kapalName, String ruteName)
     
-                jadwal jdl = new jadwal(jdwlId, kapal_id,rute_id , kapal_name, rute_name, berangkat);
+                jadwal jdl = new jadwal(jdwlId, kapal_id , rute_id , berangkat, kapal_name, rute_name);
                 jadwalArr.add(jdl); 
             }else{
                 System.out.println("kesalahan nomor kapal atau rute, silahkan coba lagi...");

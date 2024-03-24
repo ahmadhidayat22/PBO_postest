@@ -1,4 +1,4 @@
-package myPackage;
+// package myPackage;
 
 public class jadwal {
    private String jadwalId;

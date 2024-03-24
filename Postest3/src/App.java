@@ -1,6 +1,6 @@
-import myPackage.*;
+
 import java.util.ArrayList;
-import java.util.UUID;
+
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +11,33 @@ public class App {
     private static InputStreamReader sr = new InputStreamReader(System.in);
     private static BufferedReader br = new BufferedReader(sr);
     private static ArrayList<costumer> costumerArr = new ArrayList<>();
+    private static String name= "pe";
+    public static void greeting(String name)
+    {
 
-    private static void cls() 
+        for(int i = 0; i < costumerArr.size(); i++){
+            costumer cs = costumerArr.get(i);
+            String csName = cs.getUsername();
+
+            if (name.equals(csName)) {
+             System.out.println("Hallo, " + csName);
+                
+            }
+            // String csName = cs.getUsername();
+            // String csPass = cs.getPassword();
+            // System.out.println(csName + csPass);
+
+        } 
+        
+    }
+    public static String getUser()
+    {
+        
+        return name;
+
+    }
+
+    protected static void cls() 
     {     
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
@@ -21,8 +46,8 @@ public class App {
 
     
     public static void main(String[] args) throws IOException {
-        admin thisAdmin = new admin("ahmad", "12345", "Admin");
-        // costumer myCostumer = new costumer("cs1", "123", "Costumer");
+        admin thisAdmin = new admin("q", "q", "Admin");
+        // costumer myCostumer = new costumer("w", "w", "Costumer");
         try {
 
             while (true) {
@@ -51,15 +76,6 @@ public class App {
                         break;
                 
                     case 2 :
-                    //    for(int i = 0; i < costumerArr.size(); i++){
-                    //      costumer cs = costumerArr.get(i);
-                    //      String csName = cs.getUsername();
-                    //      String csPass = cs.getPassword();
-                    //      System.out.println(csName + csPass);
-    
-                    //    } //
-
-
                         System.out.println("1. Masuk");
                         System.out.println("2. Buat akun");
                         System.out.println("0. kembali");
@@ -84,11 +100,8 @@ public class App {
                                         String findPassword = csArr.getPassword();
                                         if (UsernameCs.equals(findUsername) && PasswordCs.equals(findPassword)) {
                                              // goto user menu
-
-                                            System.out.println("----user----");
-                                            
-                                            br.readLine();
-
+                                            // System.out.println("berhasil login");
+                                            // greeting(UsernameCs);
                                             csArr.menuUser();
                                             match = true;
                                             break;
