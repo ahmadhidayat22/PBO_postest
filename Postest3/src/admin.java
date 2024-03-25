@@ -190,7 +190,7 @@ public class admin extends user{
                 System.out.println("masukkan data kapal dan rute terlebih dahulu!!");
                 return;
             }
-            System.out.println(kapalArr.size()+ " " + ruteArr.size() );
+            // System.out.println(kapalArr.size()+ " " + ruteArr.size() );
             showKapal();           
             showRute();
           

@@ -67,26 +67,35 @@ public class Pemesanan {
     }
     public static void setPemesanan()
     {
-        displayJadwal();
-        System.out.print("pilih no :");
-        int pilihNo = Integer.parseInt(System.console().readLine());
-        
-        if (pilihNo <= 0 || pilihNo > jadwalList.size()) {
-            System.out.println("Nomor jadwal tidak valid!");
-            return;
-        }
-        
-        jadwal jdwl = jadwalList.get(pilihNo - 1);
-        String kapalName = jdwl.getKapalName();
-        String ruteName = jdwl.getRuteName();
-        String waktu = jdwl.getWaktuBerangkat();
-        
-        System.out.print("nama pemesan : ");
-        String namaPemesan = System.console().readLine();
+        try {
+            
+            displayJadwal();
+            System.out.print("pilih no :");
+            int pilihNo = Integer.parseInt(System.console().readLine());
+            
+            if (pilihNo <= 0 || pilihNo > jadwalList.size()) {
+                System.out.println("Nomor jadwal tidak valid!");
+                return;
+            }
+            
+            jadwal jdwl = jadwalList.get(pilihNo - 1);
+            String kapalName = jdwl.getKapalName();
+            String ruteName = jdwl.getRuteName();
+            String waktu = jdwl.getWaktuBerangkat();
+            
+            System.out.print("nama pemesan : ");
+            String namaPemesan = System.console().readLine();
 
-        System.out.println(kapalName + ruteName +waktu);
-        Pemesanan pesanan = new Pemesanan(namaPemesan, kapalName, ruteName, waktu);
-        pesananArr.add(pesanan);
+            // System.out.println(kapalName + ruteName +waktu);
+            Pemesanan pesanan = new Pemesanan(namaPemesan, kapalName, ruteName, waktu);
+            pesananArr.add(pesanan);
+            System.out.println("Berhasil dipesan");
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println("error: " + e);
+            
+        }
 
     }
     public static void getPemesanan()
@@ -102,7 +111,7 @@ public class Pemesanan {
                 String kapal = pmsn.getNamaKapal();
                 String rute = pmsn.getRuteKapal();
                 String waktu = pmsn.getWaktuBerangkat();
-                System.out.println("-----------------------------");
+                System.out.println("\n-----------------------------");
                 System.out.println("\nNama Pemesan : " + nama);
                 System.out.println("Kapal : " + kapal);
                 System.out.println("rute : " + rute);

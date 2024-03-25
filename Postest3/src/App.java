@@ -11,31 +11,31 @@ public class App {
     private static InputStreamReader sr = new InputStreamReader(System.in);
     private static BufferedReader br = new BufferedReader(sr);
     private static ArrayList<costumer> costumerArr = new ArrayList<>();
-    private static String name= "pe";
-    public static void greeting(String name)
-    {
+    // private static String name= "pe";
+    // public static void greeting(String name)
+    // {
 
-        for(int i = 0; i < costumerArr.size(); i++){
-            costumer cs = costumerArr.get(i);
-            String csName = cs.getUsername();
+    //     for(int i = 0; i < costumerArr.size(); i++){
+    //         costumer cs = costumerArr.get(i);
+    //         String csName = cs.getUsername();
 
-            if (name.equals(csName)) {
-             System.out.println("Hallo, " + csName);
+    //         if (name.equals(csName)) {
+    //          System.out.println("Hallo, " + csName);
                 
-            }
-            // String csName = cs.getUsername();
-            // String csPass = cs.getPassword();
-            // System.out.println(csName + csPass);
+    //         }
+    //         // String csName = cs.getUsername();
+    //         // String csPass = cs.getPassword();
+    //         // System.out.println(csName + csPass);
 
-        } 
+    //     } 
         
-    }
-    public static String getUser()
-    {
+    // }
+    // public static String getUser()
+    // {
         
-        return name;
+    //     return name;
 
-    }
+    // }
 
     protected static void cls() 
     {     
@@ -46,12 +46,12 @@ public class App {
 
     
     public static void main(String[] args) throws IOException {
-        admin thisAdmin = new admin("q", "q", "Admin");
+        admin thisAdmin = new admin("ahmad", "123", "Admin");
         // costumer myCostumer = new costumer("w", "w", "Costumer");
         try {
 
             while (true) {
-                // cls();
+                cls();
                 
                 System.out.println("Pemesanan tiket kapal");
                 System.out.println("1. Admin");
@@ -100,8 +100,7 @@ public class App {
                                         String findPassword = csArr.getPassword();
                                         if (UsernameCs.equals(findUsername) && PasswordCs.equals(findPassword)) {
                                              // goto user menu
-                                            // System.out.println("berhasil login");
-                                            // greeting(UsernameCs);
+                                           
                                             csArr.menuUser();
                                             match = true;
                                             break;

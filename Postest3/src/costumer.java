@@ -50,7 +50,6 @@ public class costumer extends user{
                 switch (pilih) {
                     case 1 ->{
                         Pemesanan.setPemesanan();
-                        System.out.println("Berhasil dipesan");
                         br.readLine();
                     }
                     case 2 ->{
