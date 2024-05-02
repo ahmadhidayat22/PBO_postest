@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class costumer extends user implements iPesanTiket{
     private final static String role = "costumer";
@@ -38,12 +37,7 @@ public class costumer extends user implements iPesanTiket{
     }
 
 
-    private static String randomUID() {
-        final String uuid = UUID.randomUUID().toString().split("-")[1].toUpperCase();
-        return uuid;
-        
-    }
-
+    
     public static void displayJadwal()
     {
        
